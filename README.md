@@ -15,6 +15,8 @@ Optional:
 
 * `script` URL of a script to pull down and execute. Python and Bash currently available. Must include the shebang.
 
+Note the project is pulled from the JSON key.
+
 ## Example
 
 ```yaml
