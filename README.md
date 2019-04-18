@@ -14,3 +14,20 @@ The following parameters are required:
 Optional:
 
 * `script` URL of a script to pull down and execute. Python and Bash currently available. Must include the shebang.
+
+## Example
+
+```yaml
+kind: pipeline
+name: default
+
+steps:
+
+- name: gcloud
+  image: viant/drone-gcloud
+  settings:
+    gke_base64_key:
+      from_secret: gke_base64_key
+    zone: us-central1-a
+    script: https://github.vianttech.com/raw/techops/drone-gke/some_script.sh
+```
