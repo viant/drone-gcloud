@@ -33,3 +33,4 @@ steps:
     zone: us-central1-a
     script: https://github.vianttech.com/raw/techops/drone-gke/some_script.sh
 ```
+
