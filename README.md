@@ -6,7 +6,7 @@ Drone plugin to execute gcloud and gsutil commands using a bas64 encoded JSON ke
 
 ## Usage
 
-The following parameters are required:
+The following parameter is required:
 
 * `gke_base64_key` base64 encoded JSON key
 
@@ -32,3 +32,6 @@ steps:
     script: https://github.vianttech.com/raw/techops/drone-gke/some_script.sh
 ```
 
+## Testing
+
+Modify the included `test.sh` script to test. You only need to provide the location of the base64 encoded JSON key.
