@@ -37,22 +37,6 @@ else
     exit 1 
 fi
 
-# Set cluster
-if [[ $DEBUG == "True" ]]
-then
-    $GCLOUD container clusters get-credentials $CLUSTER --zone $ZONE
-else
-    $GCLOUD container clusters get-credentials $CLUSTER --zone $ZONE > /dev/null 2>&1 
-fi
-if [ $? == 0 ]
-then
-    echo "Cluster set to : $CLUSTER"
-    echo "Zone set to    : $ZONE"
-else
-    echo "Unable to set zone: $ZONE or cluster: $CLUSTER"
-    exit 1 
-fi
-
 # Execute script if specified
 if [ -n "$SCRIPT" ]
 then

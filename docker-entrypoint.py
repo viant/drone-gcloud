@@ -5,8 +5,7 @@ import sys
 import subprocess
 
 os_vars = [
-    'GKE_BASE64_KEY',
-    'ZONE'
+    'GKE_BASE64_KEY'
     ]
 
 for os_var in os_vars:

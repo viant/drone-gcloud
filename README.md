@@ -9,7 +9,6 @@ Drone plugin to execute gcloud and gsutil commands using a bas64 encoded JSON ke
 The following parameters are required:
 
 * `gke_base64_key` base64 encoded JSON key
-* `zone` Zone to execute in
 
 Optional:
 
@@ -30,7 +29,6 @@ steps:
   settings:
     gke_base64_key:
       from_secret: gke_base64_key
-    zone: us-central1-a
     script: https://github.vianttech.com/raw/techops/drone-gke/some_script.sh
 ```
 
