@@ -1,3 +1,3 @@
 #!/bin/bash
 
-/usr/bin/gcloud compute instances list
+/google-cloud-sdk/bin/gcloud compute instances list

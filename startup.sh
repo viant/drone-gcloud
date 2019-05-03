@@ -1,6 +1,6 @@
 #!/bin/bash
 
-GCLOUD='/usr/bin/gcloud'
+GCLOUD='/google-cloud-sdk/bin/gcloud'
 
 # Decode key
 echo $GKE_BASE64_KEY | base64 -d - > /gcloud.json
