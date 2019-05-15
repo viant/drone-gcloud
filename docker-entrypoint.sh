@@ -2,8 +2,13 @@
 
 GCLOUD='/google-cloud-sdk/bin/gcloud'
 
-# Decode key
-echo $GKE_BASE64_KEY | base64 -d - > /gcloud.json
+if [[ -n "$PLUGIN_GKE_BASE64_KEY" ]]
+then
+    echo $PLUGIN_GKE_BASE64_KEY | base64 -d - > /gcloud.json
+else
+    echo "GKE_BASE64_KEY required"
+    exit 1
+fi
 
 # Set project
 PROJECT=`cat /gcloud.json | jq -r .project_id`
@@ -38,7 +43,7 @@ else
 fi
 
 # Execute script if specified
-if [ -n "$SCRIPT" ]
+if [ -n "$PLUGIN_SCRIPT" ]
 then
     curl $SCRIPT -o /execute_me -s
     chmod +x /execute_me
