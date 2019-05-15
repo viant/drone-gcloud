@@ -49,3 +49,5 @@ then
     chmod +x /execute_me
     /execute_me
 fi
+
+exec "$@"
