@@ -12,7 +12,7 @@ RUN ln -s /google-cloud-sdk/bin/gcloud /usr/local/bin/gcloud
 RUN curl -Lo /kubectl https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl
 RUN chmod +x /kubectl
 
-COPY docker-entrypoint.py /
+COPY docker-entrypoint.sh /
 RUN chmod +x /docker-entrypoint.sh
 
 ENTRYPOINT ["/docker-entrypoint.sh"]
