@@ -38,9 +38,19 @@ else
 fi
 
 # Execute script if specified
-if [ -n "$SCRIPT" ]
+if [ -n "$SCRIPT_FILE" ]
 then
     curl $SCRIPT -o /execute_me -s
     chmod +x /execute_me
     /execute_me
+fi
+
+# Execute commands if specified
+if [ -n "$SCRIPT" ]
+then
+    IFS=","
+    for v in $SCRIPT
+    do
+        $v
+    done
 fi

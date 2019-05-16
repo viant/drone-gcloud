@@ -20,6 +20,9 @@ for os_var in os_vars:
 if "PLUGIN_SCRIPT" in os.environ:
     os.environ["SCRIPT"] = os.environ["PLUGIN_SCRIPT"]
 
+if "PLUGIN_SCRIPT_FILE" in os.environ:
+    os.environ["SCRIPT_FILE"] = os.environ["PLUGIN_SCRIPT_FILE"]
+
 # Print debug messages if enabled
 if "PLUGIN_DEBUG" in os.environ:
     os.environ['DEBUG'] = "True"
