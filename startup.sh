@@ -51,6 +51,6 @@ then
     IFS=","
     for v in $SCRIPT
     do
-        $v
+        eval "$v"
     done
 fi
