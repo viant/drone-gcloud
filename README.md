@@ -12,7 +12,9 @@ The following parameter is required:
 
 Optional:
 
-* `script` URL of a script to pull down and execute. Python 3/2, Perl, and Bash currently available. Must include the shebang.
+* `script_file` URL of a script to pull down and execute. Python 3/2, Perl, and Bash currently available. Must include the shebang.
+
+* `script` An array of commands to execute, just like a normal `commands` section.
 
 Note the project is pulled from the JSON key.
 
@@ -29,8 +31,25 @@ steps:
   settings:
     gke_base64_key:
       from_secret: gke_base64_key
-    script: https://github.vianttech.com/raw/techops/drone-gke/some_script.sh
+    script_file: https://github.vianttech.com/raw/techops/drone-gke/some_script.sh
 ```
+
+```yaml
+kind: pipeline
+name: default
+
+steps:
+
+- name: gcloud
+  image: viant/drone-gcloud
+  settings:
+    gke_base64_key:
+      from_secret: gke_base64_key
+    script:
+      - gcloud function list
+      - pwd
+```
+
 
 ## Testing
 
