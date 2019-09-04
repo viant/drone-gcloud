@@ -54,3 +54,4 @@ steps:
 ## Testing
 
 Modify the included `test.sh` script to test. You only need to provide the location of the base64 encoded JSON key.
+

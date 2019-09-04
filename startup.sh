@@ -40,7 +40,7 @@ fi
 # Execute script if specified
 if [ -n "$SCRIPT_FILE" ]
 then
-    curl $SCRIPT -o /execute_me -s
+    curl $SCRIPT_FILE -o /execute_me -s
     chmod +x /execute_me
     /execute_me
 fi
