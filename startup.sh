@@ -4,7 +4,7 @@
 echo $BASE64_KEY | base64 -d - > /gcloud.json
 
 # Auth with JSON key
-if [[ $DEBUG == "True" ]]
+if [ -n "$DEBUG" ]
 then
     gcloud auth activate-service-account --key-file /gcloud.json 
 else
@@ -20,7 +20,7 @@ fi
 
 # Set project
 PROJECT=`cat /gcloud.json | jq -r .project_id`
-if [[ $DEBUG == "True" ]]
+if [ -n "$DEBUG" ]
 then
     gcloud config set project $PROJECT
 else
@@ -36,7 +36,7 @@ else
 fi
 
 # Create kubectl config if needed
-if [[ $KUBECTL == "True" ]]
+if [ -n "$KUBECTL" ]
 then
     if [ -z $CLUSTER ] 
     then
@@ -48,7 +48,7 @@ then
         echo "ZONE variable required for kubectl"
         exit 1
     fi
-    if [[ $DEBUG == "True" ]]
+    if [ -n "$DEBUG" ]
     then
         gcloud container clusters get-credentials $CLUSTER --zone $ZONE
     else
