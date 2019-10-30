@@ -18,7 +18,6 @@ RUN chmod +x ./kubectl
 RUN mv ./kubectl /usr/local/bin/kubectl
 
 COPY docker-entrypoint.py /
-COPY entrypoint.yaml /
 COPY startup.sh /
 
 RUN chmod +x /startup.sh
