@@ -12,7 +12,7 @@ else
 fi
 if [[ $? == 0 ]]
 then
-    echo "JSON auth : Success"
+    echo "JSON auth      : Success"
 else
     echo "Unable to auth"
     exit 1 
