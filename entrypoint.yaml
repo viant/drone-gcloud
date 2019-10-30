@@ -1,0 +1,13 @@
+required_vars:
+  - BASE64_KEY
+
+optional_vars:
+  - SCRIPT
+  - SCRIPT_FILE
+  - KUBECTL
+  - CLUSTER
+  - ZONE
+  - DEBUG
+
+secret_vars:
+  - BASE64_KEY
