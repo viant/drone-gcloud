@@ -1,8 +1,5 @@
 #!/bin/bash
 
-pwd
-ls
-
 # Decode key
 echo $BASE64_KEY | base64 -d - > /gcloud.json
 

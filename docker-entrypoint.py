@@ -8,8 +8,6 @@ import yaml
 f = open("entrypoint.yaml")
 entrypoint = yaml.safe_load(f)
 
-print entrypoint
-
 # Required
 if 'required_vars' in entrypoint:
     for required_var in entrypoint['required_vars']:
@@ -21,7 +19,7 @@ if 'required_vars' in entrypoint:
             sys.exit(1)
 
 # Optional 
-if 'optional_var' in entrypoint:
+if 'optional_vars' in entrypoint:
     for optional_var in entrypoint['optional_vars']:
         plugin_var = "PLUGIN_" + optional_var
         if plugin_var in os.environ:
@@ -37,8 +35,6 @@ if "PLUGIN_DEBUG" in os.environ:
     for optional_var in entrypoint['optional_vars']:
         if optional_var in os.environ:
             print "%s : %s" % (optional_var, os.environ[optional_var])
-
-print os.environ
 
 if subprocess.call(sys.argv[1:]) is not 0:
     sys.exit(1)
