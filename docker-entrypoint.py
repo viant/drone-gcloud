@@ -5,7 +5,7 @@ import sys
 import subprocess
 import yaml
 
-f = open("entrypoint.yaml")
+f = open("/entrypoint.yaml")
 entrypoint = yaml.safe_load(f)
 
 # Required
