@@ -5,7 +5,7 @@ import sys
 import subprocess
 
 os_vars = [
-    'GKE_BASE64_KEY'
+    'BASE64_KEY'
     ]
 
 for os_var in os_vars:
@@ -27,12 +27,12 @@ if "PLUGIN_SCRIPT_FILE" in os.environ:
 if "PLUGIN_DEBUG" in os.environ:
     os.environ['DEBUG'] = "True"
     for os_var in os_vars:
-        if os_var == "GKE_BASE64_KEY" and "PLUGIN_DEBUG_BASE64" not in os.environ:
+        if os_var == "BASE64_KEY" and "PLUGIN_DEBUG_BASE64" not in os.environ:
             continue
         print "%s : %s" % (os_var, os.environ[os_var])
     for plugin_var in os.environ:
         if plugin_var[:6] == "PLUGIN":
-            if os_var == "PLUGIN_GKE_BASE64_KEY" and "PLUGIN_DEBUG_BASE64" not in os.environ:
+            if os_var == "PLUGIN_BASE64_KEY" and "PLUGIN_DEBUG_BASE64" not in os.environ:
                 continue
             print "%s : %s" % (plugin_var, os.environ[plugin_var])
 

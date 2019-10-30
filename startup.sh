@@ -3,7 +3,7 @@
 GCLOUD='/google-cloud-sdk/bin/gcloud'
 
 # Decode key
-echo $GKE_BASE64_KEY | base64 -d - > /gcloud.json
+echo $BASE64_KEY | base64 -d - > /gcloud.json
 
 # Set project
 PROJECT=`cat /gcloud.json | jq -r .project_id`

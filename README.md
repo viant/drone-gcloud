@@ -8,7 +8,7 @@ Drone plugin to execute gcloud and gsutil commands using a bas64 encoded JSON ke
 
 The following parameter is required:
 
-* `gke_base64_key` base64 encoded JSON key
+* `base64_key` base64 encoded JSON key
 
 Optional:
 
@@ -29,9 +29,9 @@ steps:
 - name: gcloud
   image: viant/drone-gcloud
   settings:
-    gke_base64_key:
-      from_secret: gke_base64_key
-    script_file: https://github.vianttech.com/raw/techops/drone-gke/some_script.sh
+    base64_key:
+      from_secret: base64_key
+    script_file: https://github.com/raw/viant/drone-gcloud/some_script.sh
 ```
 
 ```yaml
@@ -43,8 +43,8 @@ steps:
 - name: gcloud
   image: viant/drone-gcloud
   settings:
-    gke_base64_key:
-      from_secret: gke_base64_key
+    base64_key:
+      from_secret: base64_key
     script:
       - gcloud function list
       - pwd
