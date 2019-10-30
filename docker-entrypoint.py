@@ -38,5 +38,7 @@ if "PLUGIN_DEBUG" in os.environ:
         if optional_var in os.environ:
             print "%s : %s" % (optional_var, os.environ[optional_var])
 
+print os.environ
+
 if subprocess.call(sys.argv[1:]) is not 0:
     sys.exit(1)
