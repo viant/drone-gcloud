@@ -6,6 +6,21 @@ KUBECTL='/usr/local/bin/kubectl'
 # Decode key
 echo $BASE64_KEY | base64 -d - > /gcloud.json
 
+# Auth with JSON key
+if [[ $DEBUG == "True" ]]
+then
+    $GCLOUD auth activate-service-account --key-file /gcloud.json 
+else
+    $GCLOUD auth activate-service-account --key-file /gcloud.json > /dev/null 2>&1
+fi
+if [[ $? == 0 ]]
+then
+    echo "JSON auth : Success"
+else
+    echo "Unable to auth"
+    exit 1 
+fi
+
 # Set project
 PROJECT=`cat /gcloud.json | jq -r .project_id`
 if [[ $DEBUG == "True" ]]
@@ -21,21 +36,6 @@ then
 else
     echo "Unable to set project: $PROJECT"
     exit 1
-fi
-
-# Auth with JSON key
-if [[ $DEBUG == "True" ]]
-then
-    $GCLOUD auth activate-service-account --key-file /gcloud.json 
-else
-    $GCLOUD auth activate-service-account --key-file /gcloud.json > /dev/null 2>&1
-fi
-if [[ $? == 0 ]]
-then
-    echo "JSON auth : Success"
-else
-    echo "Unable to auth"
-    exit 1 
 fi
 
 # Create kubectl config if needed
