@@ -8,6 +8,8 @@ import yaml
 f = open("entrypoint.yaml")
 entrypoint = yaml.safe_load(f)
 
+print entrypoint
+
 # Required
 if 'required_vars' in entrypoint:
     for required_var in entrypoint['required_vars']:
