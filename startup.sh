@@ -1,6 +1,7 @@
 #!/bin/bash
 
 GCLOUD='/google-cloud-sdk/bin/gcloud'
+KUBECTL='/usr/local/bin/kubectl'
 
 # Decode key
 echo $BASE64_KEY | base64 -d - > /gcloud.json
@@ -31,10 +32,38 @@ else
 fi
 if [[ $? == 0 ]]
 then
-    echo "JSON auth      : Success"
+    echo "JSON auth : Success"
 else
     echo "Unable to auth"
     exit 1 
+fi
+
+# Create kubectl config if needed
+if [[ $KUBECTL == "True" ]]
+then
+    if [ -z $CLUSTER ] 
+    then
+        echo "CLUSTER variable required for kubectl"
+        exit 1
+    fi
+    if [ -z $ZONE ] 
+    then
+        echo "ZONE variable required for kubectl"
+        exit 1
+    fi
+    if [[ $DEBUG == "True" ]]
+    then
+        $GCLOUD container clusters get-credentials $CLUSTER --zone $ZONE
+    else
+        $GCLOUD container clusters get-credentials $CLUSTER --zone $ZONE > /dev/null 2>&1
+    fi
+    if [[ $? == 0 ]]
+    then
+        echo "kubectl config : Success"
+    else
+        echo "Unable to create config"
+        exit 1 
+    fi
 fi
 
 # Execute script if specified

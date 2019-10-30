@@ -16,6 +16,8 @@ Optional:
 
 * `script` An array of commands to execute, just like a normal `commands` section.
 
+* `kubectl` Setup `kubectl`. If set the `cluster` and `zone` settings are required 
+
 Note the project is pulled from the JSON key.
 
 ## Example
@@ -50,6 +52,23 @@ steps:
       - pwd
 ```
 
+```yaml
+kind: pipeline
+name: default
+
+steps:
+
+- name: gcloud
+  image: viant/drone-gcloud
+  settings:
+    base64_key:
+      from_secret: base64_key
+    kubectl: True
+    cluster: my_cluster
+    zone: us-east4-a
+    script:
+      - kubectl get pods
+```
 
 ## Testing
 
