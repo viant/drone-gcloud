@@ -1,17 +1,14 @@
 #!/bin/bash
 
-GCLOUD='/google-cloud-sdk/bin/gcloud'
-KUBECTL='/usr/local/bin/kubectl'
-
 # Decode key
 echo $BASE64_KEY | base64 -d - > /gcloud.json
 
 # Auth with JSON key
 if [[ $DEBUG == "True" ]]
 then
-    $GCLOUD auth activate-service-account --key-file /gcloud.json 
+    gcloud auth activate-service-account --key-file /gcloud.json 
 else
-    $GCLOUD auth activate-service-account --key-file /gcloud.json > /dev/null 2>&1
+    gcloud auth activate-service-account --key-file /gcloud.json > /dev/null 2>&1
 fi
 if [[ $? == 0 ]]
 then
@@ -25,9 +22,9 @@ fi
 PROJECT=`cat /gcloud.json | jq -r .project_id`
 if [[ $DEBUG == "True" ]]
 then
-    $GCLOUD config set project $PROJECT
+    gcloud config set project $PROJECT
 else
-    $GCLOUD config set project $PROJECT > /dev/null 2>&1
+    gcloud config set project $PROJECT > /dev/null 2>&1
 fi
 
 if [[ $? == 0 ]]
@@ -53,9 +50,9 @@ then
     fi
     if [[ $DEBUG == "True" ]]
     then
-        $GCLOUD container clusters get-credentials $CLUSTER --zone $ZONE
+        gcloud container clusters get-credentials $CLUSTER --zone $ZONE
     else
-        $GCLOUD container clusters get-credentials $CLUSTER --zone $ZONE > /dev/null 2>&1
+        gcloud container clusters get-credentials $CLUSTER --zone $ZONE > /dev/null 2>&1
     fi
     if [[ $? == 0 ]]
     then

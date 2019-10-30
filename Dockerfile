@@ -4,7 +4,7 @@ FROM alpine:latest
 ARG GCLOUD_VERSION=269.0.0
 
 # Install required packages
-RUN apk --no-cache add curl ca-certificates python jq bash
+RUN apk --no-cache add curl ca-certificates python jq bash py-yaml
 
 # Install gcloud
 RUN curl -LO https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-sdk-${GCLOUD_VERSION}-linux-x86_64.tar.gz
@@ -18,6 +18,7 @@ RUN chmod +x ./kubectl
 RUN mv ./kubectl /usr/local/bin/kubectl
 
 COPY docker-entrypoint.py /
+COPY entrypoint.yaml /
 COPY startup.sh /
 
 RUN chmod +x /startup.sh
