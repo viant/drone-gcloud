@@ -15,10 +15,11 @@ if 'required_vars' in entrypoint:
         if plugin_var in os.environ:
             os.environ[required_var] = os.environ[plugin_var]
         if required_var not in os.environ:
-            print "%s or %s environment variable required" %(required_var, plugin_var)
+            print "%s or %s environment variable required" % (required_var,
+                                                              plugin_var)
             sys.exit(1)
 
-# Optional 
+# Optional
 if 'optional_vars' in entrypoint:
     for optional_var in entrypoint['optional_vars']:
         plugin_var = "PLUGIN_" + optional_var
