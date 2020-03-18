@@ -1,4 +1,4 @@
-FROM alpine:latest
+FROM alpine:3.8
 
 # Set gcloud version
 ARG GCLOUD_VERSION=269.0.0
