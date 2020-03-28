@@ -70,6 +70,23 @@ steps:
       - kubectl get pods
 ```
 
+## Packer example
+
+```yaml
+- name: gcloud
+  image: viant/drone-gcloud
+  environment:
+    GOOGLE_APPLICATION_CREDENTIALS: /gcloud.json
+  settings:
+    base64_key:
+      from_secret: base64_key
+    script:
+      - packer build path/to/config.json
+```
+
+
+
+
 ## Testing
 
 Modify the included `test.sh` script to test. You only need to provide the location of the base64 encoded JSON key.
