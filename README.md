@@ -84,8 +84,20 @@ steps:
       - packer build path/to/config.json
 ```
 
+## Terraform example
 
-
+```yaml
+- name: gcloud
+  image: viant/drone-gcloud
+  environment:
+    GOOGLE_APPLICATION_CREDENTIALS: /gcloud.json
+  settings:
+    base64_key:
+      from_secret: base64_key
+    script:
+      - terraform init
+      - terraform apply -auto-approve
+```
 
 ## Testing
 

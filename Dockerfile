@@ -3,6 +3,7 @@ FROM alpine:3.8
 # Set versions
 ARG GCLOUD_VERSION=269.0.0
 ARG PACKER_VERSION=1.5.5
+ARG TERRAFORM_VERSION=0.12.24
 
 # Install required packages
 RUN apk --no-cache add curl ca-certificates python jq bash py-yaml gettext
@@ -23,6 +24,11 @@ RUN mv ./kubectl /usr/local/bin/kubectl
 RUN wget https://releases.hashicorp.com/packer/${PACKER_VERSION}/packer_${PACKER_VERSION}_linux_amd64.zip -O packer.zip &&\
     unzip packer.zip -d /usr/local/bin &&\
     rm -f packer.zip
+
+# Install Terraform
+RUN wget https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform_${TERRAFORM_VERSION}_linux_amd64.zip -O terraform.zip &&\
+    unzip terraform.zip -d /usr/local/bin &&\
+    rm -f terraform.zip
 
 COPY entrypoint.yaml /
 COPY docker-entrypoint.py /
