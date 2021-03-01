@@ -30,8 +30,9 @@ fi
 if [[ $? == 0 ]]
 then
     echo "Project set to : $PROJECT"
-else
+  else
     echo "Unable to set project: $PROJECT"
+    gcloud -q info --run-diagnostics
     exit 1
 fi
 
