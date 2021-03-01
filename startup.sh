@@ -32,7 +32,7 @@ then
     echo "Project set to : $PROJECT"
   else
     echo "Unable to set project: $PROJECT"
-    gcloud -q info --run-diagnostics --verbosity=debug --log-http
+    gcloud -q info --run-diagnostics --verbosity=debug
     exit 1
 fi
 
