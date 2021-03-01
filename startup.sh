@@ -22,9 +22,9 @@ fi
 PROJECT=`cat /gcloud.json | jq -r .project_id`
 if [ -n "$DEBUG" ]
 then
-    gcloud config set project $PROJECT
+    gcloud -q config set project $PROJECT
 else
-    gcloud config set project $PROJECT > /dev/null 2>&1
+    gcloud -q config set project $PROJECT > /dev/null 2>&1
 fi
 
 if [[ $? == 0 ]]
