@@ -6,7 +6,7 @@ steps:
 - name: publish
   image: plugins/docker
   settings:
-    repo: viant/drone-gcloud2
+    repo: viant/drone-gcloud
     username: replicant0wnz 
     password:
       from_secret: docker_password
