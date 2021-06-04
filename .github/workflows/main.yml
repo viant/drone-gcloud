@@ -18,7 +18,7 @@ on:
 
 env:
   PROJECT_ID: ${{ secrets.GKE_PROJECT }}
-  IMAGE: static-site
+  IMAGE: drone-gcloud
 
 jobs:
   setup-build-publish-deploy:
